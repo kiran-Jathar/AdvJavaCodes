@@ -1,0 +1,112 @@
+//Calculator Demo...
+import java.awt.*;
+import java.awt.event.*;
+class CalculatorDemo extends Frame implements ActionListener
+{
+	Button b1,b2,b3,b4,b5;
+	TextField tf1,tf2,tf3;
+	CalculatorDemo()
+	{
+		setLayout(null);
+		setBackground(Color.pink);
+		Label L1=new Label("***Simple Calculator***");
+		L1.setForeground(Color.red);
+		setForeground(Color.black);
+		
+		Label L2=new Label("Enter 1st Number:");
+		Label L3=new Label("Enter 2nd Number:");		
+		Label L4=new Label("Result:");
+		
+	    tf1=new TextField(30);
+	    tf2=new TextField(30);
+		tf3=new TextField(30);
+		
+	    b1=new Button("ADD");
+		b2=new Button("Sub");
+		b3=new Button("Mul");
+		b4=new Button("Div");
+		b5=new Button("Clear");
+		
+		Font f1=new Font("Arial black",Font.BOLD|Font.ITALIC,25);
+		Font f2=new Font("Arial black",Font.BOLD,18);
+		L1.setFont(f1);
+		L2.setFont(f2);
+		L3.setFont(f2);
+		L4.setFont(f2);
+		b1.setFont(f2);
+		tf1.setFont(f2);
+		tf2.setFont(f2);
+		tf3.setFont(f2);
+		b1.setFont(f2);
+		b2.setFont(f2);
+		b3.setFont(f2);
+		b4.setFont(f2);
+		b5.setFont(f2);
+
+		
+		L1.setBounds(140,50,500,80);
+		L2.setBounds(50,180,180,40);
+		tf1.setBounds(260,180,160,40);
+		L3.setBounds(50,260,180,40);
+		L4.setBounds(50,340,180,40);
+		tf2.setBounds(260,260,160,40);
+		tf3.setBounds(260,340,160,40);
+		tf3.setForeground(Color.blue);
+		b1.setBounds(50,420,100,50);
+		b2.setBounds(170,420,100,50);
+		b3.setBounds(290,420,100,50);
+		b4.setBounds(410,420,100,50);
+		b5.setBounds(530,420,100,50);
+		
+				
+		add(L1);add(L2);add(L3);add(L4);
+		add(tf1);add(tf2);add(tf3);
+		add(b1);add(b2);add(b3);add(b4);add(b5);
+		
+		b1.addActionListener(this); 
+		b2.addActionListener(this); 	
+		b3.addActionListener(this); 	
+		b4.addActionListener(this); 	
+		b5.addActionListener(this); 
+	}
+	public void actionPerformed(ActionEvent ae)
+	{
+		int x=Integer.parseInt(tf1.getText());
+		int y=Integer.parseInt(tf2.getText());
+		int z;
+		String str=ae.getActionCommand();
+		if(str.equals("ADD")) //getActionCommand Method Use...
+		{	
+			z=x+y;
+			tf3.setText(""+z);
+		}
+		else if(ae.getSource()==b2)
+		{
+		    z=x-y;
+			tf3.setText(""+z);
+		}
+	    else if(ae.getSource()==b3)
+		{
+		    z=x*y;
+			tf3.setText(""+z);
+		}
+	    else if(ae.getSource()==b4)
+		{
+		    z=x/y;
+			tf3.setText(""+z);
+		}
+		else if(ae.getSource()==b5)
+		{
+		    tf1.setText("");
+			tf2.setText("");
+			tf3.setText("");
+		}
+	}
+	public static void main(String args[])
+	{
+	  CalculatorDemo f1=new CalculatorDemo();
+	  f1.setVisible(true);
+	  f1.setTitle("Calculator Demo");
+	  f1.setSize(650,500);
+	}
+}
