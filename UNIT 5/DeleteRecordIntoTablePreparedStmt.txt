@@ -1,0 +1,23 @@
+//WAP to dalete records into database table
+import java.sql.*;
+import java.util.*;
+class DeleteRecordIntoTablePreparedStmt
+{
+	public static void main(String args[])throws SQLException,ClassNotFoundException
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("Driver Register Successfully...!!!");
+		
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+		System.out.println("Database Connection established Successfully...!!!");
+		
+		PreparedStatement pstmt=con.prepareStatement("delete from vjtech where rollno=?");
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Roll No for deletion:");
+		int rn=sc.nextInt();
+		pstmt.setInt(1,rn);
+		int x=pstmt.executeUpdate();
+		System.out.println("No of Rows deleted from table:"+x);
+		con.close();
+	}
+}

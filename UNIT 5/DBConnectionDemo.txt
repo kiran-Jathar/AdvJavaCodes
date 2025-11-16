@@ -1,0 +1,16 @@
+//database connection
+import java.sql.*;
+class DBConnectionDemo
+{
+	public static void main(String args[])throws SQLException,ClassNotFoundException
+	{
+		//1. Register driver
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("Driver Register Successfully...!!!");
+		//2. Create Connection
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+		
+		System.out.println("Database Connection established Successfully...!!!");
+		con.close();
+	}
+}

@@ -1,0 +1,28 @@
+//ResultSetMetaData
+import java.sql.*;
+class ResultSetMetaDataDemo
+{
+	public static void main(String args[])throws SQLException,ClassNotFoundException
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("Driver Register Successfully...!!!");
+		
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+		System.out.println("Database Connection established Successfully...!!!");
+		
+		Statement stmt=con.createStatement();
+		ResultSet rs=stmt.executeQuery("select * from vjtech");
+		ResultSetMetaData rsmd=rs.getMetaData();
+		
+		System.out.println("No of Columns="+rsmd.getColumnCount());
+		System.out.println("1st column name="+rsmd.getColumnName(1));
+		System.out.println("1st Column type name="+rsmd.getColumnTypeName(1));
+		System.out.println("2nd column name="+rsmd.getColumnName(2));
+		System.out.println("2nd Column type name="+rsmd.getColumnTypeName(2));
+		System.out.println("3rd column name="+rsmd.getColumnName(3));
+		System.out.println("3rd Column type name="+rsmd.getColumnTypeName(3));
+		String t1=rsmd.getTableName(2);
+		System.out.println("Table Name="+t1);
+		con.close();
+	}
+}

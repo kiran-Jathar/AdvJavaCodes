@@ -1,0 +1,22 @@
+//WAP to create table in database using java program
+import java.sql.*;
+class CreateTableDemo
+{
+	public static void main(String args[])throws SQLException,ClassNotFoundException
+	{
+		//1. Register driver
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("Driver Register Successfully...!!!");
+		
+		//2. Create Connection
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+		System.out.println("Database Connection established Successfully...!!!");
+		
+		Statement stmt=con.createStatement();
+		
+		stmt.execute("create table employee(empid number(5),name varchar(10),salary number(5))");
+		
+		System.out.println("Table created successfully!!!");
+		con.close();
+	}
+}

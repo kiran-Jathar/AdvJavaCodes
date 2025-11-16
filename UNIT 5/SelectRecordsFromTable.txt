@@ -1,0 +1,25 @@
+//WAP to fetch all records from database table
+import java.sql.*;
+class SelectRecordsFromTable
+{
+	public static void main(String args[])throws SQLException,ClassNotFoundException
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("Driver Register Successfully...!!!");
+		
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+		System.out.println("Database Connection established Successfully...!!!");
+		
+		Statement stmt=con.createStatement();
+		
+		ResultSet rs=stmt.executeQuery("select * from vjtech");
+		System.out.println("*****VJTech Student Records******");
+		System.out.println("RollNo\tName\tMarks");
+		System.out.println("=========================");
+		while(rs.next())
+		{
+		  System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getInt(3));
+		}
+		con.close();
+	}
+}

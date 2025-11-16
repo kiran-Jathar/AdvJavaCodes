@@ -1,0 +1,18 @@
+//WAP to update records into database table
+import java.sql.*;
+class UpdateRecordIntoTable
+{
+	public static void main(String args[])throws SQLException,ClassNotFoundException
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		System.out.println("Driver Register Successfully...!!!");
+		
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+		System.out.println("Database Connection established Successfully...!!!");
+		
+		Statement stmt=con.createStatement();
+		int x=stmt.executeUpdate("update vjtech set marks=100 where rollno=4040");
+		System.out.println("No of Rows Updated into table:"+x);
+		con.close();
+	}
+}
